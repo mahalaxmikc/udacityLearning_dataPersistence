@@ -8,6 +8,8 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@NamedQuery(name = "Delivery.findByName",
+        query = "select d from Delivery d where d.recipientName = :recipientName")
 @Entity
 public class Delivery {
 
@@ -20,6 +22,9 @@ public class Delivery {
         @Column(name = "address_full",length = 500)
         private String address;
         private LocalDateTime deliveryTime;
+
+
+
         @Type(type = "yes_no")
         private Boolean completed;
 
@@ -27,6 +32,19 @@ public class Delivery {
         private List<Plant> plantList;
 
 
+        public Delivery(String recipientName, String address, LocalDateTime deliveryTime) {
+                this.recipientName = recipientName;
+                this.address = address;
+                this.deliveryTime = deliveryTime;
+        }
+
+        public Delivery(String recipientName, String address, LocalDateTime deliveryTime, Boolean completed, List<Plant> plantList) {
+                this.recipientName = recipientName;
+                this.address = address;
+                this.deliveryTime = deliveryTime;
+                this.completed = completed;
+                this.plantList = plantList;
+        }
 
         public long getId() {
                 return id;
