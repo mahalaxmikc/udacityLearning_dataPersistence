@@ -21,8 +21,8 @@ public class Customer  extends  User{
     public Customer() {
     }
 
-    public Customer(String name, String phoneNumber, String notes, List<Pet> petList) {
-        setName(name);
+    public Customer(Long id,String name, String phoneNumber, String notes, List<Pet> petList) {
+        super(id, name);
         this.phoneNumber = phoneNumber;
         this.notes = notes;
         this.petList = petList;
